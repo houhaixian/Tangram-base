@@ -14,7 +14,7 @@
  * 
  */
 
-//module("baidu.swf.Proxy");
+module("baidu.swf.Proxy");
 
 // normal
 //test(

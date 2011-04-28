@@ -50,7 +50,7 @@ test("ver no errorMessage", function() {
 		url : "short1.swf",
 		width:'100',
 		height:'100',
-		ver:'11.0.0',
+		ver:'11.0.0'
 	}, 'div_id');
 	equal(div.innerHTML,'',"flash 对象没有创建成功");
 	setTimeout(function(){
