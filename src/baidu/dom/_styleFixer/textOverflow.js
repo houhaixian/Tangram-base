@@ -133,12 +133,12 @@ baidu.dom._styleFixer.textOverflow = (function () {
     return {
 		get: function (element) {
             var browser = baidu.browser,
-                getStyle = dom.getStyle;
+                getStyle = baidu.dom.getStyle;
 			return (browser.opera ?
-                        getStyle("OTextOverflow") :
+                        getStyle(element,"OTextOverflow") :
                         browser.firefox ?
                             element._baiduOverflow :
-                            getStyle("textOverflow")) ||
+                            getStyle(element,"textOverflow")) ||
                    "clip";
 		},
 
