@@ -79,7 +79,7 @@ test('测试闭包', function() {
 	baidu.sio.callByBrowser(upath + 'tangram.js', function() {
 		equals(window.TT.version, '1.3.0', 'check version in package');
 		//当前版本已经提升至1.3.6，2011-04-17，bell
-		equals(baidu.version, '1.3.6', 'check version normal');
+		equals(baidu.version, '1.3.7', 'check version normal');
 		start();
 	});
 });
