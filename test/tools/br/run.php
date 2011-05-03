@@ -16,9 +16,11 @@ $release = array_key_exists('release', $_GET);
 <?php $c->print_js($cov, $release); ?>
 </head>
 <body>
-<h1 id="qunit-header"><?php print($c->name);?></h1>
-<h2 id="qunit-banner"></h2>
-<h2 id="qunit-userAgent"></h2>
-<ol id="qunit-tests"></ol>
+	<h1 id="qunit-header">
+	<?php print($c->name);?>
+	</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
 </body>
 </html>

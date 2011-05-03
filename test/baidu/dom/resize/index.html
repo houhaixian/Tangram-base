@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>resizeable Visual Test : Default</title>
-	<link rel="stylesheet" href="visual.css" type="text/css" />
-    <script type="text/javascript" src="../../../../src/import.php?f=baidu.dom.resizable,baidu.dom.ready"></script>
-    
-    <script type="text/javascript">
+<meta charset="UTF-8" />
+<title>resizeable Visual Test : Default</title>
+<link rel="stylesheet" href="visual.css" type="text/css" />
+<script type="text/javascript"
+	src="../../../../src/import.php?f=baidu.dom.resizable,baidu.dom.ready"></script>
+
+<script type="text/javascript">
         var reArray = [];    
         baidu.dom.ready(function(){
                 
@@ -39,19 +40,26 @@
 	</script>
 </head>
 <body>
-    <h1>resize</h1>
-    <input type="button" value="dispose" onclick="javascript:cancel();"></input>
-    <div style="background-color:#444444; width:200px; height:200px">
-        <div style="background-color:width; width:200px; height:200px">
-            <div id="resizeable0" class="r0"></div>
-        </div>
-    </div>
-    <div id="resizeable1Content" class="resizeable content">
-        <div id="resizeable1" class="resizeable r1"><p>Resiaze1</p></div>
-    </div>
-    <div id="resizeable2" class="resizeable r2"><p>Resiaze2</p></div>
-    <div style="width:300px; height:400px; position:absolute; right:100px; top:300px">
-        <div id="resizeable3" class="resizeable r3"><p>Resiaze3</p></div>
-    </div>
+	<h1>resize</h1>
+	<input type="button" value="dispose" onclick="javascript:cancel();"></input>
+	<div style="background-color: #444444; width: 200px; height: 200px">
+		<div style="background-color: width; width: 200px; height: 200px">
+			<div id="resizeable0" class="r0"></div>
+		</div>
+	</div>
+	<div id="resizeable1Content" class="resizeable content">
+		<div id="resizeable1" class="resizeable r1">
+			<p>Resiaze1</p>
+		</div>
+	</div>
+	<div id="resizeable2" class="resizeable r2">
+		<p>Resiaze2</p>
+	</div>
+	<div
+		style="width: 300px; height: 400px; position: absolute; right: 100px; top: 300px">
+		<div id="resizeable3" class="resizeable r3">
+			<p>Resiaze3</p>
+		</div>
+	</div>
 </body>
 </html>

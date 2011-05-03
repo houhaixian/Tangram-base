@@ -114,7 +114,7 @@ function interXML($onlyfails = false) {
 			}
 
 		}
-//		unlink("report/$f");
+		//		unlink("report/$f");
 	}
 
 	//根据需求添加仅记录失败情况的接口

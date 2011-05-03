@@ -2,7 +2,7 @@
 /*
  * Tangram
  * Copyright 2009 Baidu Inc. All rights reserved.
- * 
+ *
  * path: import.php
  * author: berg
  * version: 1.0
@@ -23,9 +23,9 @@ $MATCHED = array();
 $IMPORTED = array();
 
 if(isset($_GET['path'])){
-    $PATH = explode(',', $_GET['path']);
+	$PATH = explode(',', $_GET['path']);
 }else{
-    $PATH = array();
+	$PATH = array();
 }
 
 echo importTangram(explode(',', $_GET['f']), false);
@@ -33,68 +33,68 @@ echo importTangram(explode(',', $_GET['f']), false);
 // 无敌旋转分隔线
 
 function importTangram($files, $returnFile = true){
-    global $MATCHED, $DEBUG, $IMPORTED;
+	global $MATCHED, $DEBUG, $IMPORTED;
 
-    $output = "";
+	$output = "";
 
-    if(is_string($files)){
-        $files = array($files);
-    }else if(!is_array($files)){
-        return $output;
-    }
-    if($DEBUG)
-        var_dump($files);
-    foreach($files as $file){
-        if(strrpos($file, '*')){
-            $output .= importTangram(getPackage(str_replace(array(".", '*'), array('/', ''), $file)));
-        }elseif(in_array($file, $IMPORTED)){
-            continue;
-        }else{
-            $IMPORTED[] = $file;
-            $file = str_replace(".", '/', $file) . ".js";
-            if($DEBUG)
-                echo "Importing: " . $file . ", returnFile $returnFile\n";
-            if(!in_array($file, $MATCHED)){
-                $content = getFileContents($file);
-                if(!$content){
-                    if($DEBUG)
-                        echo "no content... \n;";
-                    continue;
-                }
-                $MATCHED[] = $file;
-                $matches = array();
-                //去掉注释
-                $content = trim(preg_replace("/\/\*(.*?)\*\//ies", "", $content));
-                $output .= preg_replace("/\/\/\/import\s+([\w\-\$]+(\.[\w\-\$]+)*);?/ies", "importTangram('\\1')", $content);
-            }
-        }
-    }
-    return $output;
+	if(is_string($files)){
+		$files = array($files);
+	}else if(!is_array($files)){
+		return $output;
+	}
+	if($DEBUG)
+	var_dump($files);
+	foreach($files as $file){
+		if(strrpos($file, '*')){
+			$output .= importTangram(getPackage(str_replace(array(".", '*'), array('/', ''), $file)));
+		}elseif(in_array($file, $IMPORTED)){
+			continue;
+		}else{
+			$IMPORTED[] = $file;
+			$file = str_replace(".", '/', $file) . ".js";
+			if($DEBUG)
+			echo "Importing: " . $file . ", returnFile $returnFile\n";
+			if(!in_array($file, $MATCHED)){
+				$content = getFileContents($file);
+				if(!$content){
+					if($DEBUG)
+					echo "no content... \n;";
+					continue;
+				}
+				$MATCHED[] = $file;
+				$matches = array();
+				//去掉注释
+				$content = trim(preg_replace("/\/\*(.*?)\*\//ies", "", $content));
+				$output .= preg_replace("/\/\/\/import\s+([\w\-\$]+(\.[\w\-\$]+)*);?/ies", "importTangram('\\1')", $content);
+			}
+		}
+	}
+	return $output;
 }
 
 function getFileContents($filename){
-    global $PATH;
+	global $PATH;
 
-    $path = $PATH;
-    array_unshift($path, "./");
+	$path = $PATH;
+	array_unshift($path, "./");
 
-    foreach($path as $eachPath){
-        if($content = @file_get_contents($eachPath . $filename)){
-            return $content;
-        }
-    }
-    //为编译更新路径by bell 2011-2-15
-    return file_get_contents("../../Tangram-base/src/". $filename);
+	foreach($path as $eachPath){
+		if($content = @file_get_contents($eachPath . $filename)){
+			return $content;
+		}
+	}
+	//为编译更新路径by bell 2011-2-15
+	return file_get_contents("../../Tangram-base/src/". $filename);
 }
 
 function getPackage($packagePath){
-    $files = array();
-    if ($handle = opendir($packagePath)) {
-        while ($file = readdir($handle)) { 
-            if(strrpos($file, ".js")  && substr($file,0,1) != ".")
-                $files[] = substr($packagePath . $file, 0, -3); //把最后的.js去掉，适应importTangram的输入
-        } 
-        closedir($handle); 
-    }
-    return $files;
+	$files = array();
+	if ($handle = opendir($packagePath)) {
+		while ($file = readdir($handle)) {
+			if(strrpos($file, ".js")  && substr($file,0,1) != ".")
+			$files[] = substr($packagePath . $file, 0, -3); //把最后的.js去掉，适应importTangram的输入
+		}
+		closedir($handle);
+	}
+	return $files;
 }

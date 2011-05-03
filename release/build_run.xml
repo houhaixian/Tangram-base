@@ -15,7 +15,8 @@
 	</path>
 
 	<!--为hudson做的扩展，用于支持多用户运行环境，会直接提取当前项目的父目录名称作为user -->
-	<taskdef name="gitext" classname="com.baidu.tangram.GitExt" classpathref="ext.classpath" />
+	<taskdef name="gitext" classname="com.baidu.tangram.GitExt"
+		classpathref="ext.classpath" />
 
 	<target name="init">
 		<delete dir="${report.path}" />
@@ -33,7 +34,9 @@
 
 	<target name="execute" depends="init,coverage">
 		<gitext />
-		<get src="http://${serverip}/${git.user}/${git.project}/test/tools/br/runall.php?ci=true&amp;cov=true" dest="/tmp/${git.user}_${git.project}.php" />
+		<get
+			src="http://${serverip}/${git.user}/${git.project}/test/tools/br/runall.php?ci=true&amp;cov=true"
+			dest="/tmp/${git.user}_${git.project}.php" />
 	</target>
 	<target name="getreport" depends="init,coverage,execute">
 		<waitfor maxwait="300" maxwaitunit="second">
@@ -41,7 +44,8 @@
 		</waitfor>
 	</target>
 
-	<taskdef name='taskImport' classname="com.baidu.tangram.TaskImport" classpath="release/import.jar">
+	<taskdef name='taskImport' classname="com.baidu.tangram.TaskImport"
+		classpath="release/import.jar">
 	</taskdef>
 
 	<target name="importSrc">
@@ -118,7 +122,9 @@
 	</target>
 
 	<target name="releaserun" depends="release">
-		<get src="http://${serverip}/${git.user}/${project-release}/test/tools/br/runall.php?ci=true&amp;release=true" dest="/tmp/${git.user}_${git.project}.php" />
+		<get
+			src="http://${serverip}/${git.user}/${project-release}/test/tools/br/runall.php?ci=true&amp;release=true"
+			dest="/tmp/${git.user}_${git.project}.php" />
 		<waitfor maxwait="300" maxwaitunit="second">
 			<available file="${report.file}" />
 		</waitfor>

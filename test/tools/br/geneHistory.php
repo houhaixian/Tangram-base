@@ -13,7 +13,7 @@ function geneHistory($html){
 	//提供一个供jenkens查看的报告链接
 	if(array_key_exists('release', $_PUT))
 	$report = 'index_release.html';
-	else 
+	else
 	$report = 'index.html';
 	$handle = fopen("$path/$report", "w");
 	fwrite($handle, $html);

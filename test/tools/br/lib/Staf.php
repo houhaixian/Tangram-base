@@ -34,14 +34,14 @@ class Staf{
 	 * @param unknown_type $host
 	 */
 	public static function process_stop($handle, $host='local', $all=0){
-		$cmd = $all ? "STOP ALL CONFIRM":"STOP HANDLE $handle";		
+		$cmd = $all ? "STOP ALL CONFIRM":"STOP HANDLE $handle";
 		return self::process($cmd, $host);
 	}
 
 	public static function queryHandle($browser){
-		$filename = "temp\\$browser";		
+		$filename = "temp\\$browser";
 		if(file_exists($filename)){
-			$handle = file_get_contents($filename);				
+			$handle = file_get_contents($filename);
 			delete($filename);
 			return $handle;
 		}
